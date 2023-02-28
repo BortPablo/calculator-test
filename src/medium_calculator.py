@@ -36,6 +36,12 @@ class MediumCalculator:
             raise ValueError("Unsupported operand type")
         self.tot **= x
         return self.tot
+
+    def sqrt(self) -> float:
+        if self.tot < 0:
+            raise ValueError("Cannot take square root of negative number")
+        self.tot **= 0.5
+        return self.tot
     
     def reset(self) -> float:
         self.tot = 0
@@ -57,9 +63,9 @@ def main () -> None:
         
     calc = MediumCalculator(tot)
     while True:
-        op = input("Enter an operation (+, -, *, /, **, r to reset & q to quit): ")
+        op = input("Enter an operation (+, -, *, /, **, sqrt, r to reset & q to quit): ")
 
-        if op not in ["+", "-", "*", "/", "**", "r", "q"]:
+        if op not in ["+", "-", "*", "/", "**", "sqrt", "r", "q"]:
             print("Invalid operation")
             continue
         if op == "q":
@@ -74,6 +80,8 @@ def main () -> None:
             calc = MediumCalculator(tot)
             continue
         while True:
+            if op == "sqrt":
+                break
             try:
                 x = float(input("Enter a number: "))
                 break
@@ -90,6 +98,8 @@ def main () -> None:
             calc.divide(x)
         elif op == "**":
             calc.power(x)
+        elif op == "sqrt":
+            calc.sqrt()
     
         print("Result: " + str(calc))
     
