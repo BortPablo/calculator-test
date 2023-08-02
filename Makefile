@@ -11,7 +11,7 @@ info:
 
 setup:
 	@echo "Creating virtual environment..."
-	python3 -m virtualenv venv
+	python3.8 -m virtualenv venv
 	@echo "Installing dependencies..."
 	venv/bin/pip install -r requirements.txt
 	@echo "Starting VSCode..."
